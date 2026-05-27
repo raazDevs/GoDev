@@ -1,20 +1,35 @@
 package main
-import "fmt"
 
-const age = 24
+//const age = 24
 
 func main(){
 	// const name = "go lang"
 
 	// name = "heavy dukh"
 
-	fmt.Println(age)
+	// fmt.Println(age)
 
-	const(
-		port = 8080
-		host = "localhost"
-	)
-	fmt.Println(port, host)
+	// const(
+	// 	port = 8080
+	// 	host = "localhost"
+	// )
+	// fmt.Println(port, host)
+
+	//A constant is a value that can NEVER be changed. Use const instead of var.
+
+	const Pi        = 3.14159
+	const AppName   = "MyApp"
+	const MaxUsers  = 1000
+
+// Constants with explicit type
+	const Gravity float64 = 9.8
+
+// Block constants
+	const (
+    StatusOK    = 200
+    StatusNotFound = 404
+    StatusError = 500
+)
 
 }
 

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <title>Go Live Server</title>
+
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+
+        body{
+            height:100vh;
+            font-family:Arial, sans-serif;
+
+            display:flex;
+            justify-content:center;
+            align-items:center;
+
+            background:linear-gradient(
+                135deg,
+                #0f172a,
+                #111827,
+                #1e293b
+            );
+
+            color:white;
+        }
+
+        .container{
+            text-align:center;
+            padding:50px;
+
+            width:90%;
+            max-width:700px;
+
+            background:rgba(255,255,255,0.05);
+
+            border:1px solid rgba(255,255,255,0.1);
+
+            border-radius:20px;
+
+            backdrop-filter:blur(10px);
+
+            box-shadow:
+                0 10px 40px rgba(0,0,0,0.5);
+        }
+
+        h1{
+            font-size:60px;
+            margin-bottom:20px;
+
+            background:linear-gradient(
+                90deg,
+                #00f5ff,
+                #00ff99
+            );
+
+            -webkit-background-clip:text;
+            -webkit-text-fill-color:transparent;
+        }
+
+        p{
+            font-size:20px;
+            line-height:1.7;
+            color:#d1d5db;
+
+            margin-bottom:40px;
+        }
+
+        .buttons{
+            display:flex;
+            justify-content:center;
+            gap:20px;
+            flex-wrap:wrap;
+        }
+
+        a{
+            text-decoration:none;
+        }
+
+        button{
+            padding:15px 35px;
+
+            border:none;
+            border-radius:12px;
+
+            font-size:18px;
+            font-weight:bold;
+
+            cursor:pointer;
+
+            transition:0.3s;
+
+            background:#00ff99;
+            color:#111827;
+        }
+
+        button:hover{
+            transform:translateY(-5px);
+            box-shadow:
+                0 10px 20px rgba(0,255,153,0.3);
+        }
+
+        .secondary{
+            background:#2563eb;
+            color:white;
+        }
+
+        .secondary:hover{
+            box-shadow:
+                0 10px 20px rgba(37,99,235,0.4);
+        }
+
+        .footer{
+            margin-top:40px;
+            font-size:14px;
+            color:#9ca3af;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Go Live Server 🚀</h1>
+
+        <p>
+            Welcome to your first Go web server project.
+            Learn backend development, DevOps concepts,
+            APIs, and server-side programming step by step.
+        </p>
+
+        <div class="buttons">
+
+            <a href="/hello">
+                <button>
+                    Hello Route
+                </button>
+            </a>
+
+            <a href="/form">
+                <button class="secondary">
+                    Open Form
+                </button>
+            </a>
+
+        </div>
+
+        <div class="footer">
+            Built with Go + HTML + CSS
+        </div>
+
+    </div>
+
+</body>
+</html>

@@ -1,5 +1,7 @@
 package main
 
+import "fmt"
+
 func main() {
 	// var name string = "golang"
 
@@ -20,48 +22,69 @@ func main() {
 	// price := 50.5
 
 	// fmt.Println(price)
+
+	// Short form
+	x, y := 10, 20
+
+	// Swap values (Go does this elegantly)
+	x, y = y, x // x is now 20, y is now 10
+
+	// Block declaration (great for related variables)
+	// var (
+	// 	host  = "localhost"
+	// 	port  = 8080
+	// 	debug = false
+	// )
+
+	// fmt.Println(host, port, debug)
+
+	// var name string  = "Alice"
+	// var age  int     = 25
+	// var gpa  float64 = 8.5
+	// var active bool  = true
+
+	// fmt.Printf("Name: %s\n", name)      // %s = string
+	// fmt.Printf("Age: %d\n", age)		// %d = integer (decimal)	
+	// fmt.Printf("GPA: %.2f\n", gpa)	// %.2f = float, 2 decimal places
+	// fmt.Printf("Active: %t\n", active) // %t = boolean (true/false)
+
+
+	//Way 2: Short declaration with :=
+
+	// name := "Saju"
+	// age := 23
+	// gpa := 8.75
+	// active := true	
+	// fmt.Printf("Name: %s\n", name)      // %s = string
+	// fmt.Printf("Age: %d\n", age)		// %d = integer (decimal)	
+	// fmt.Printf("GPA: %.2f\n", gpa)	// %.2f = float, 2 decimal places
+	// fmt.Printf("Active: %t\n", active) // %t = boolean (true/false)	
+
+	var price   float32 = 9.99       // 32-bit, less precise, less memory
+	var salary  float64 = 95000.50   // 64-bit, more precise, recommended
+
+	// When you write a decimal number, Go defaults to float64
+	discount := 0.15    // float64 automatically
+	pi       := 3.14159 // float64 automatically
+
+	// Printf formatting
+	fmt.Printf("%f\n", price)    // default float format: 9.990000
+	fmt.Printf("%.2f\n", salary)   // 2 decimal places: 95000.50
+	fmt.Printf("%f\n", discount)  // default float format: 0.150000
+	
+	fmt.Printf("%.4f\n", pi)       // 4 decimal places: 3.1416
+	fmt.Printf("%e\n", salary)     // scientific: 9.500050e+04
 }
 
+//Rule: Use float64 by default. Only use float32 if you have a specific memory constraint.
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-//the main thing is that may be you want to declare a variable without initializing it, in that case you can use the var keyword without assigning a value to it. This will give the variable a default value based on its type (e.g., 0 for int, "" for string, false for bool).
-
-// For example:	Declaring a variable without initializing it
-// var name string
-// fmt.Println(name) // Output: ""		
-// In this case, the variable 'name' is declared as a string but not initialized, so it will have the default value of an empty string ("").
-// You can also declare multiple variables of the same type in a single line using the var keyword. For example:
-// var age, height int
-// fmt.Println(age, height) // Output: 0 0
-// Here, both 'age' and 'height' are declared as integers and will have the default value of 0.
-// Additionally, you can declare and initialize multiple variables in a single line using the shorthand syntax. For example:
-// name, age := "golang", 30
-// fmt.Println(name, age) // Output: golang 30
-// In this case, 'name' is initialized with the value "golang" and 'age' is initialized with the value 30 using the shorthand syntax.
-// Overall, the var keyword is used to declare variables in Go, and it can be used with or without initialization. The shorthand syntax provides a convenient way to declare and initialize variables in a single line.
-// In Go, you can declare variables using the var keyword. The var keyword allows you to specify the type of the variable and optionally initialize it with a value. Here are some examples of how to declare variables in Go:
-
-// Declaring a variable with a specific type and initializing it
-// var name string = "golang"
-// Declaring a variable with type inference (the type is inferred from the assigned value)
-// var name = "golang"
-// Declaring a variable using shorthand syntax (only for local variables)
-
-// name := "golang"
-// Declaring a variable without initializing it (it will have a default value based on its type)
-// var name string
-// fmt.Println(name) // Output: ""	
-
+// Type        Zero Value    Why it matters
+//─────────────────────────────────────────────────
+// int         0             Safe to do math with
+// float64     0.0           Safe to do math with
+// string      ""            Safe to compare and print
+// bool        false         Safe for conditions
+// pointer     nil           Safe — means "nothing here"
+// slice       nil           Safe — means "empty list"
+// map         nil           Safe — means "empty map"
