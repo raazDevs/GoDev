@@ -203,48 +203,48 @@ import "fmt"
 
 
 // Accept zero or more ints
-func sum(nums ...int) int {
-    total := 0
-    for _, n := range nums {
-        total += n
-    }
-    return total
-}
+// func sum(nums ...int) int {
+//     total := 0
+//     for _, n := range nums {
+//         total += n
+//     }
+//     return total
+// }
 
-// Mixed: fixed params first, variadic last
-func logMessage(level string, parts ...string) {
-    fmt.Printf("[%s]", level)
-    for _, p := range parts {
-        fmt.Printf(" %s", p)
-    }
-    fmt.Println()
-}
+// // Mixed: fixed params first, variadic last
+// func logMessage(level string, parts ...string) {
+//     fmt.Printf("[%s]", level)
+//     for _, p := range parts {
+//         fmt.Printf(" %s", p)
+//     }
+//     fmt.Println()
+// }
 
-// Variadic with any type using interface{}
-func printAll(values ...interface{}) {
-    for i, v := range values {
-        fmt.Printf("%d: %v (%T)\n", i, v, v)
-    }
-}
+// // Variadic with any type using interface{}
+// func printAll(values ...interface{}) {
+//     for i, v := range values {
+//         fmt.Printf("%d: %v (%T)\n", i, v, v)
+//     }
+// }
 
-func main() {
-    fmt.Println(sum())              // 0   — zero args is fine
-    fmt.Println(sum(1, 2, 3))      // 6
-    fmt.Println(sum(10, 20, 30, 40, 50))  // 150
+// func main() {
+//     fmt.Println(sum())              // 0   — zero args is fine
+//     fmt.Println(sum(1, 2, 3))      // 6
+//     fmt.Println(sum(10, 20, 30, 40, 50))  // 150
 
-    // Pass a slice by spreading it with ...
-    scores := []int{85, 92, 78, 96}
-    fmt.Println(sum(scores...))    // 351
+//     // Pass a slice by spreading it with ...
+//     scores := []int{85, 92, 78, 96}
+//     fmt.Println(sum(scores...))    // 351
 
-    logMessage("INFO", "server", "started", "on", "port", "8080")
-    // [INFO] server started on port 8080
+//     logMessage("INFO", "server", "started", "on", "port", "8080")
+//     // [INFO] server started on port 8080
 
-    printAll("hello", 42, true, 3.14)
-    // 0: hello (string)
-    // 1: 42 (int)
-    // 2: true (bool)
-    // 3: 3.14 (float64)
-}
+//     printAll("hello", 42, true, 3.14)
+//     // 0: hello (string)
+//     // 1: 42 (int)
+//     // 2: true (bool)
+//     // 3: 3.14 (float64)
+// }
 
 
 
@@ -277,3 +277,43 @@ func main() {
 
 
 
+// func main() {
+//     // Define and call immediately
+//     func() {
+//         fmt.Println("I am anonymous!")
+//     }()    // the () at the end calls it right away
+
+//     // Assign to a variable
+//     double := func(n int) int {
+//         return n * 2
+//     }
+//     fmt.Println(double(7))   // 14
+
+//     // Closure — a function that "captures" a variable from its outer scope
+//     counter := 0
+//     increment := func() {
+//         counter++   // captures and modifies counter from outer scope
+//     }
+//     increment()
+//     increment()
+//     increment()
+//     fmt.Println(counter)   // 3
+// }
+
+
+
+
+
+
+func readFile() {
+    fmt.Println("1. Opening file")
+    defer fmt.Println("4. Closing file")   // runs LAST
+
+    fmt.Println("2. Reading file")
+    fmt.Println("3. Processing data")
+    // function ends here, then deferred call runs
+}
+
+func main() {
+    readFile()
+}
