@@ -305,18 +305,18 @@ func main() {
 
 
 
-// func readFile() {
-//     fmt.Println("1. Opening file")
-//     defer fmt.Println("4. Closing file")   // runs LAST
+func readFile() {
+    fmt.Println("1. Opening file")
+    defer fmt.Println("4. Closing file")   // runs LAST
 
-//     fmt.Println("2. Reading file")
-//     fmt.Println("3. Processing data")
-//     // function ends here, then deferred call runs
-// }
+    fmt.Println("2. Reading file")
+    fmt.Println("3. Processing data")
+    // function ends here, then deferred call runs
+}
 
-// func main() {
-//     readFile()
-// }
+func main() {
+    readFile()
+}
 
 
 
