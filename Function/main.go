@@ -277,43 +277,59 @@ import "fmt"
 
 
 
+func main() {
+    // Define and call immediately
+    func() {
+        fmt.Println("I am anonymous!")
+    }()    // the () at the end calls it right away
+
+    // Assign to a variable
+    double := func(n int) int {
+        return n * 2
+    }
+    fmt.Println(double(7))   // 14
+
+    // Closure — a function that "captures" a variable from its outer scope
+    counter := 0
+    increment := func() {
+        counter++   // captures and modifies counter from outer scope
+    }
+    increment()
+    increment()
+    increment()
+    fmt.Println(counter)   // 3
+}
+
+
+
+
+
+
+// func readFile() {
+//     fmt.Println("1. Opening file")
+//     defer fmt.Println("4. Closing file")   // runs LAST
+
+//     fmt.Println("2. Reading file")
+//     fmt.Println("3. Processing data")
+//     // function ends here, then deferred call runs
+// }
+
 // func main() {
-//     // Define and call immediately
-//     func() {
-//         fmt.Println("I am anonymous!")
-//     }()    // the () at the end calls it right away
-
-//     // Assign to a variable
-//     double := func(n int) int {
-//         return n * 2
-//     }
-//     fmt.Println(double(7))   // 14
-
-//     // Closure — a function that "captures" a variable from its outer scope
-//     counter := 0
-//     increment := func() {
-//         counter++   // captures and modifies counter from outer scope
-//     }
-//     increment()
-//     increment()
-//     increment()
-//     fmt.Println(counter)   // 3
+//     readFile()
 // }
 
 
 
-
-
-
-func readFile() {
-    fmt.Println("1. Opening file")
-    defer fmt.Println("4. Closing file")   // runs LAST
-
-    fmt.Println("2. Reading file")
-    fmt.Println("3. Processing data")
-    // function ends here, then deferred call runs
-}
-
 func main() {
-    readFile()
+    defer fmt.Println("first defer — runs LAST")
+    defer fmt.Println("second defer — runs MIDDLE")
+    defer fmt.Println("third defer — runs FIRST")
+    fmt.Println("main body")
 }
+// Output:
+// main body
+// third defer — runs FIRST
+// second defer — runs MIDDLE
+// first defer — runs LAST
+
+
