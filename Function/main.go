@@ -277,48 +277,81 @@ import "fmt"
 
 
 
-func main() {
-    // Define and call immediately
-    func() {
-        fmt.Println("I am anonymous!")
-    }()    // the () at the end calls it right away
+// func main() {
+//     // Define and call immediately
+//     func() {
+//         fmt.Println("I am anonymous!")
+//     }()    // the () at the end calls it right away
 
-    // Assign to a variable
-    double := func(n int) int {
-        return n * 2
-    }
-    fmt.Println(double(7))   // 14
+//     // Assign to a variable
+//     double := func(n int) int {
+//         return n * 2
+//     }
+//     fmt.Println(double(7))   // 14
 
-    // Closure — a function that "captures" a variable from its outer scope
-    counter := 0
-    increment := func() {
-        counter++   // captures and modifies counter from outer scope
-    }
-    increment()
-    increment()
-    increment()
-    fmt.Println(counter)   // 3
-}
-
-
+//     // Closure — a function that "captures" a variable from its outer scope
+//     counter := 0
+//     increment := func() {
+//         counter++   // captures and modifies counter from outer scope
+//     }
+//     increment()
+//     increment()
+//     increment()
+//     fmt.Println(counter)   // 3
+// }
 
 
+// func main() {
+//     func() {
+//         fmt.Println("Hello from an anonymous function!")
+//     }()
 
 
-func readFile() {
-    fmt.Println("1. Opening file")
-    defer fmt.Println("4. Closing file")   // runs LAST
+//     double := func(n int) int {
+//         return n * 2
+//     }
+//     fmt.Println(double(7))   // 14
+//     counter := 0
+//     increment := func() {
+//         counter++
+//     }
+//     increment()     
+//     increment()
+//     increment()
+//     fmt.Println(counter)   // 3
+// }     
 
-    fmt.Println("2. Reading file")
-    fmt.Println("3. Processing data")
-    // function ends here, then deferred call runs
-}
-
-func main() {
-    readFile()
-}
 
 
+
+
+
+
+//  ----------Form 8 — defer (runs last, always)///////
+
+
+
+// func readFile() {
+//     fmt.Println("1. Opening file")
+//     defer fmt.Println("4. Closing file")   // runs LAST
+
+//     fmt.Println("2. Reading file")
+//     fmt.Println("3. Processing data")
+//     // function ends here, then deferred call runs
+// }
+
+// func main() {
+//     readFile()
+// }
+// // Output:
+// // 1. Opening file
+// // 2. Reading file
+// // 3. Processing data
+// // 4. Closing file
+
+
+
+//Multiple defers execute in LIFO order (last in, first out) — like a stack:
 
 func main() {
     defer fmt.Println("first defer — runs LAST")
@@ -333,3 +366,4 @@ func main() {
 // first defer — runs LAST
 
 
+//(Real-world use of defer: every time you open a file, connect to a database, or acquire a lock, you defer the close/release immediately after opening. This guarantees cleanup no matter what happens — even if an error occurs.)
